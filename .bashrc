@@ -74,10 +74,12 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
 if [[ $EUID == 0 ]] ; then
-	PS1="\[\e[30;1m\]┌─[\[$Red\u\e[30;1m\]]──[\[$Purple\h\[\e[30;1m\]]\[$Green\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[$Red\]>>\[$Color_Off\]"
+	USER_COLOR="${Red}"
 else
-	PS1="\[\e[30;1m\]┌─[\[$Blue\u\e[30;1m\]]──[\[$Purple\h\[\e[30;1m\]]\[$Green\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[$Blue\]>>\[$Color_Off\]"
+	USER_COLOR="${Blue}"
 fi
+
+PS1="\[\e[30;1m\]┌─[\[${USER_COLOR}\u@\h\e[30;1m\]]\[\e[30;1m\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[${USER_COLOR}\]>>\[$Color_Off\]"
 
 [ ! "$UID" = "0" ] && archey3
 [  "$UID" = "0" ] && archey3 -c red
