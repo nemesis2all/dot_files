@@ -74,9 +74,9 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White
 
 if [[ $EUID == 0 ]] ; then
-	PS1="\[\e[30;1m\]┌─[\[$Red\u\e[30;1m\]]──[\\e[0;35m\]${HOSTNAME%%.*}\[\e[30;1m\]]\[$Green\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[$Red\]>>\[$Color_Off\]"
+	PS1="\[\e[30;1m\]┌─[\[$Red\u\e[30;1m\]]──[\[$Purple\h\[\e[30;1m\]]\[$Green\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[$Red\]>>\[$Color_Off\]"
 else
-	PS1="\[\e[30;1m\]┌─[\[$Blue\u\e[30;1m\]]──[\\e[0;35m\]${HOSTNAME%%.*}\[\e[30;1m\]]\[$Green\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[$Blue\]>>\[$Color_Off\]"
+	PS1="\[\e[30;1m\]┌─[\[$Blue\u\e[30;1m\]]──[\[$Purple\h\[\e[30;1m\]]\[$Green\]:\w\[\e[30;1m\]\n\[\e[30;1m\]└──\[$Blue\]>>\[$Color_Off\]"
 fi
 
 [ ! "$UID" = "0" ] && archey3
