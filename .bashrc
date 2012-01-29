@@ -87,6 +87,10 @@ PS1="\[\e[30;1m\]┌─[\[${USER_COLOR}\u@\h\e[30;1m\]]\[\e[30;1m\]──[${USER
 # Alias added to color ls output
 alias ls='ls --color=auto'
 
+# Alias added for suspend and hibernate
+alias slock='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
+alias hlock='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate'
+
 # Alias added to extract archives from bashrc helpers
 extract() {
  local e=0 i c
