@@ -1,4 +1,5 @@
 export EDITOR=nano
+shopt -s extglob
 
 # Reset
 Color_Off='\e[0m'       # Text Reset
@@ -93,30 +94,37 @@ alias hlock='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /o
 
 # Alias added to extract archives from bashrc helpers
 extract() {
- local e=0 i c
- for i; do
-   if [ -f $i && -r $i ]; then
-       c=
-       case $i in
-         *.tar.bz2) c='tar xjf'    ;;
-         *.tar.gz)  c='tar xzf'    ;;
-         *.bz2)     c='bunzip2'    ;;
-         *.gz)      c='gunzip'     ;;
-         *.tar)     c='tar xf'     ;;
-         *.tbz2)    c='tar xjf'    ;;
-         *.tgz)     c='tar xzf'    ;;
-         *.7z)      c='7z x'       ;;
-         *.Z)       c='uncompress' ;;
-         *.exe)     c='cabextract' ;;
-         *.rar)     c='unrar x'    ;;
-         *.xz)      c='unxz'       ;;
-         *.zip)     c='unzip'      ;;
-         *)     echo "$0: cannot extract \`$i': Unrecognized file extension" >&2; e=1 ;;
-       esac
-       [ $c ] && command $c "$i"
-   else
-       echo "$0: cannot extract \`$i': File is unreadable" >&2; e=2
-   fi
- done
- return $e
+    local c e i
+
+    (($#)) || return
+
+    for i; do
+        c=''
+        e=1
+
+        if [[ ! -r $i ]]; then
+            echo "$0: file is unreadable: \`$i'" >&2
+            continue
+        fi
+
+        case $i in
+        *.t@(gz|lz|xz|b@(2|z?(2))|a@(z|r?(.@(Z|bz?(2)|gz|lzma|xz)))))
+               c='bsdtar xvf';;
+        *.7z)  c='7z x';;
+        *.Z)   c='uncompress';;
+        *.bz2) c='bunzip2';;
+        *.exe) c='cabextract';;
+        *.gz)  c='gunzip';;
+        *.rar) c='unrar x';;
+        *.xz)  c='unxz';;
+        *.zip) c='unzip';;
+        *)     echo "$0: unrecognized file extension: \`$i'" >&2
+               continue;;
+        esac
+
+        command $c "$i"
+        e=$?З
+    done
+
+    return $e
 }
