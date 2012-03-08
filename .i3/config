@@ -109,9 +109,13 @@ bindsym $mod+Shift+asterisk move workspace 8
 bindsym $mod+Shift+parenleft move workspace 9
 bindsym $mod+Shift+parenright move workspace 10
 
-# web
+# web browser
 assign [class="Chromium"] 2 web
 bindsym Mod1+w exec chromium
+
+# torrent
+assign [class="Transmission"] 2 web
+bindsym Mod1+t exec transmission-gtk
 
 # file manager
 assign [class="Pcmanfm"] 3 file manager
