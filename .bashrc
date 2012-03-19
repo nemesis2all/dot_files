@@ -82,8 +82,8 @@ fi
 
 PS1="\[\e[30;1m\]┌─[\[${USER_COLOR}\u@\h\e[30;1m\]]\[\e[30;1m\]──[${USER_COLOR}\w\[\e[30;1m\]]\n\[\e[30;1m\]└─\[${USER_COLOR}\]>>\[$Color_Off\]"
 
-[ ! "$UID" = "0" ] && archey3
-[  "$UID" = "0" ] && archey3 -c red
+#[ ! "$UID" = "0" ] && archey3
+#[  "$UID" = "0" ] && archey3 -c red
 
 # modified commands
 alias diff='colordiff'              # requires colordiff package
