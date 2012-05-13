@@ -14,9 +14,9 @@ set $mod Mod4
 ################
 # AUTOSTART STUFF #
 ################
-exec feh --bg-scale '/usr/share/wallpapers/Zixpk.jpg'
-exec volumeicon
-exec urxvt
+exec --no-startup-id feh --bg-scale '/usr/share/wallpapers/Zixpk.jpg'
+exec --no-startup-id volumeicon
+exec --no-startup-id urxvt
 exec chromium
 exec pcmanfm
 
